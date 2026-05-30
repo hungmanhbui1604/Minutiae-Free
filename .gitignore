@@ -1,0 +1,6 @@
+__pycache__/
+ckpts_minutiae_free/
+data/
+results_minutiae_free/
+wandb/
+config_minutiae_free.yaml
