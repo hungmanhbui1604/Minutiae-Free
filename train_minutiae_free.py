@@ -146,8 +146,8 @@ def main(cfg, no_wandb=False, resume=None):
     student = get_model(cfg["model"].get("model_name", "dinov2_minutiae_free"), cfg["model"]).to(device)
     teacher = make_teacher(student).to(device)
     if world_size > 1:
-        student = DDP(student, device_ids=[local_rank], output_device=local_rank, find_unused_parameters=False)
-        teacher = DDP(teacher, device_ids=[local_rank], output_device=local_rank)
+        student = DDP(student, device_ids=[local_rank], output_device=local_rank, find_unused_parameters=True)
+        # teacher = DDP(teacher, device_ids=[local_rank], output_device=local_rank)
 
     criterion = DINOLoss(
         out_dim=cfg["model"].get("out_dim", 65536),
